@@ -28,4 +28,37 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+//locations 
+
+Route::get('/organisation/locations_list', function(){
+    return view('organisation.locations_list');
+})->name('organisation.locations_list');
+
+// //locations_form
+// Route::get('/organisation/locationsForm', action: function(){
+//     return view('organisation.locations_form');
+// })->name('organisation.form');
+
+//departments
+Route::get('/organisation/departments', function () {
+    return view('organisation.department_list');
+})->name('organisation.department_list')->middleware(['auth', 'verified']);
+
+//designations
+Route::get('/organisation/designations', function () {
+    return view('organisation.designation_list');
+})->name('organisation.designation_list')->middleware(['auth', 'verified']);
+
+
+//activities
+Route::get('/organisation/activities', function () {    
+    return view('organisation.activities_list');
+})->name('organisation.activities_list')->middleware(['auth', 'verified']);
+
+//access
+Route::get('/organisation/accessRules', function () {
+    return view('organisation.access_list');
+})->name('organisation.access_list')->middleware(['auth', 'verified']);
+
+
 require __DIR__.'/auth.php';
